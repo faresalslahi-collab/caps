@@ -16,13 +16,18 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: JavaScript",
 ]
+dependencies = [
+    "frappe>=16.0.0,<17.0.0",
+    "pypika @ git+https://github.com/frappe/pypika@7ef6e40215d46cd531e8c4e58650b84c11abbd04",
+    "gunicorn @ git+https://github.com/frappe/gunicorn@54b59ca884c79dcf04d4882658a32bbaf17e999f",
+]
 
 [project.urls]
-Homepage = "https://github.com/ArkanLab/caps"
-Repository = "https://github.com/ArkanLab/caps"
-Documentation = "https://github.com/ArkanLab/caps/tree/main/docs"
-Issues = "https://github.com/ArkanLab/caps/issues"
-Changelog = "https://github.com/ArkanLab/caps/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/faresalslahi-collab/caps"
+Repository = "https://github.com/faresalslahi-collab/caps"
+Documentation = "https://github.com/faresalslahi-collab/caps/tree/main/docs"
+Issues = "https://github.com/faresalslahi-collab/caps/issues"
+Changelog = "https://github.com/faresalslahi-collab/caps/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["flit_core >=3.4,<4"]
@@ -42,23 +47,24 @@ target-version = "py310"
 [tool.ruff.lint]
 select = ["F", "E", "W", "I", "UP", "B", "RUF"]
 ignore = [
-    "B017",   # assertRaises(Exception)
-    "B018",   # useless expression
-    "B023",   # function definition in loop
-    "B904",   # raise without from
-    "E101",   # mixed spaces and tabs
-    "E402",   # module level import not at top
-    "E501",   # line too long
-    "E741",   # ambiguous variable name
-    "F401",   # unused import
-    "F403",   # star imports
-    "F405",   # may be undefined from star import
-    "F722",   # syntax error in forward annotation
-    "W191",   # indentation contains tabs
-    "UP030",  # implicit positional references
-    "UP031",  # percent format
-    "UP032",  # f-string vs format
-    "RUF001", # ambiguous unicode
+    "B017",
+    "B018",
+    "B023",
+    "B904",
+    "E101",
+    "E402",
+    "E501",
+    "E741",
+    "F401",
+    "F403",
+    "F405",
+    "F722",
+    "W191",
+    "UP030",
+    "UP031",
+    "UP032",
+    "UP037",
+    "UP040",
 ]
 typing-modules = ["frappe.types.DF"]
 
@@ -66,16 +72,3 @@ typing-modules = ["frappe.types.DF"]
 quote-style = "double"
 indent-style = "tab"
 docstring-code-format = true
-
-[tool.pytest.ini_options]
-minversion = "7.0"
-addopts = "-ra -q --strict-markers"
-testpaths = ["caps/tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-markers = [
-    "slow: marks tests as slow",
-    "integration: integration tests",
-    "unit: unit tests",
-]
