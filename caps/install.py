@@ -18,7 +18,7 @@ def after_install():
         label="CAPS",
         route="/desk/caps-admin",
         logo_url="/assets/caps/images/caps-logo-animated.svg",
-        bg_color="#10B981",
+        bg_color="blue",
     )
     frappe.db.commit()
 
